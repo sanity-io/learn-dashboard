@@ -1,0 +1,23 @@
+{
+  "name": "learn-dashboard",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "pnpm run --parallel dev",
+    "lint": "pnpm dlx oxlint@latest --fix",
+    "format": "prettier --write .",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "packageManager": "pnpm@10.16.1",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "eslint-plugin-react-hooks": "experimental"
+    }
+  },
+  "dependencies": {
+    "prettier": "^3.6.2"
+  }
+}

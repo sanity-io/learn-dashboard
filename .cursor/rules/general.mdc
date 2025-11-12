@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+- NEVER start a dev server, assume it's already running.
+- ONLY write TypeScript, never JavaScript.

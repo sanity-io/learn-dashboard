@@ -1,0 +1,26 @@
+name: Deploy Dashboard
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sanity-deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Sanity
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.16.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Deploy Sanity
+        working-directory: apps/dashboard
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+        run: SANITY_AUTH_TOKEN=${{ secrets.SANITY_AUTH_TOKEN }} pnpm run deploy
